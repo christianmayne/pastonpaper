@@ -106,23 +106,33 @@ Date:       16th August 2011
 }
 
 .search-icon-people {
-    background-image: url('../images/icons/search-icon-people.png')
+    text-align: center;
+    border-radius: 5px;
+/*    background-image: url('../images/icons/search-icon-people.png')*/
 }
 
 .search-icon-places {
-    background-image: url('../images/icons/search-icon-places.png')
+    text-align: center;
+    border-radius: 5px;
+/*    background-image: url('../images/icons/search-icon-places.png')*/
 }
 
 .search-icon-organisations {
-    background-image: url('../images/icons/search-icon-organisations.png')
+    text-align: center;
+    border-radius: 5px;
+/*    background-image: url('../images/icons/search-icon-organisations.png')*/
 }
 
 .search-icon-dates {
-    background-image: url('../images/icons/search-icon-publications.png')
+    text-align: center;
+    border-radius: 5px;
+/*    background-image: url('../images/icons/search-icon-publications.png')*/
 }
 
 .search-icon-publications {
-    background-image: url('../images/icons/search-icon-publications.png')
+    text-align: center;
+    border-radius: 5px;
+/*    background-image: url('../images/icons/search-icon-publications.png')*/
 }
 
 .search-form {
