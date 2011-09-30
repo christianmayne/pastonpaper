@@ -16,7 +16,13 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect '/document_statuses/', :controller=>'document_statuses', :action=>'index'
   map.connect '/document_statuses/:id', :controller=>'document_statuses', :action=>'show'
- 
+
+  # Routes for Static Pages 
+  match '/about', :to=> 'pages#about'
+  match '/contact', :to => 'pages#contact'
+  match '/privacy', :to => 'pages#privacy'
+  match '/terms', :to => 'pages#terms'
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
 
