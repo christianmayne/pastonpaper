@@ -22,6 +22,7 @@ ActionController::Routing::Routes.draw do |map|
   match '/contact', :to => 'pages#contact'
   match '/privacy', :to => 'pages#privacy'
   match '/terms', :to => 'pages#terms'
+ 
   
   
   # The priority is based upon order of creation: first created -> highest priority.
