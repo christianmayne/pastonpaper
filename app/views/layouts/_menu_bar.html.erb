@@ -1,0 +1,18 @@
+<!-- Menubar -->
+
+    <%= link_to "Home", home_path, :class => "menu-item" %>
+
+
+    <% if !current_user.blank? %>
+      <%= link_to "Your Profile", "#", :class=>"menu-item unimplemented" %>
+      <%= link_to "Your Documents", documents_path, :class => "menu-item" %>
+      <%= link_to "Add your items", new_document_path, :class=> "menu-item" %>
+
+      <% if current_user.admin %>
+        <%= link_to "Site Administration", "#", :class=>"menu-item unimplemented red" %>  
+        <%= link_to "Site Statistics", "#", :class=>"menu-item unimplemented red" %> 
+      <% end %> 
+
+   <% end %>
+
+

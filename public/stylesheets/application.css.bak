@@ -1,0 +1,240 @@
+/* 
+    Document   : application
+    Created on : Jun 13, 2011, 9:02:39 PM
+    Author     : walden
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+
+*/
+
+root { 
+    display: block;
+}
+
+.container{
+ /* border: 1px solid;*/
+}
+
+
+/* Page Element Setup */`
+
+
+.menu-part{
+  border: 1px solid; 
+  margin-top: 5px;
+}
+
+.header-part{
+  margin-top: 25px;
+  min-height: 70px;
+}
+
+.search-part{
+  border-bottom: 1px solid;
+  min-height: 90px;
+}
+
+.main-part{
+  min-height: 240px;
+  border-top: 1px solid
+}
+
+.left-menu-part{
+  border-right: 1px solid;
+  min-height: 90px;
+}
+
+.menu-bottom-part{
+  min-height: 90px;
+  border-top: 1px solid;
+}
+
+.footer-part{
+  border-top: 1px solid;
+}
+
+
+.new-document{
+  margin: 10px 20px;
+}
+
+.doc-attribute-items{
+  margin-left: 25px;
+}
+
+.document-attr{
+  border: 1px solid;
+  float: left;
+  margin-bottom: 20px;
+}
+
+
+
+.border-bottom{
+  border-bottom: 1px solid;
+}
+
+.border-right{
+  border-right: 1px solid;
+}
+
+.show-items{
+}
+
+.new-document h3, .simple-search h3{
+  text-align: center;
+}
+
+.new-document p.text-title{
+  text-align: center;
+  font-weight: bold;
+}
+
+.new-document div{
+  margin-bottom: 10px;
+}
+
+.new-document p.submit{
+  text-align: center;
+}
+
+.short-input input {
+  width: 80px !important;
+}
+
+.short-select select{
+  width: 115px !important;
+}
+
+.middle-input input {
+  width: 110px !important;
+}
+
+.long-input input {
+  width:200px  !important;
+}
+
+.span-125 {
+  width:125px  !important;
+}
+
+.new-document input, select, .simple-search input, select{
+  width: 152px;
+}
+
+.attribute2-document input{
+  width: 55px;
+}
+
+.clear-both{
+  clear: both;
+}
+
+.button-add{
+  margin-top: 8px;
+  margin-left: -25px;
+}
+
+.button-add-23{
+  margin-top: 23px;
+  margin-left: -38px;
+}
+
+.attribute-document{
+}
+
+.width-fields{
+  width: 174px;
+}
+
+.date-selector {
+/*  width: 215px !important;*/
+}
+
+.date-selector select{
+  width: 68px !important;
+}
+
+.date-4{
+  width: 50px !important;
+}
+
+.date-2{
+  width: 30px !important;
+}
+
+.table{
+  margin: 30px 20px;
+  border: 1px solid;
+}
+
+.table-th{
+  font-weight: bold;
+}
+
+.table-th .table-td{
+  border-right: 1px solid;
+}
+
+.table-th span{
+  min-height: 40px;
+  padding: 5px 5px 0px 5px;
+}
+
+.table-tr{
+  border-top: 1px solid;
+}
+
+.table-tr span{
+  min-height: 80px;
+  padding: 5px 5px 0px 5px;
+}
+
+.table-tr .table-td{
+  border-right: 1px solid;
+}
+
+.link-remove{
+  margin-top: 9px;
+}
+
+.link-remove-25{
+  margin-top: 25px;
+}
+
+.top-20{
+  margin-top: 20px;
+}
+
+.top-25{
+  margin-top: 25px;
+}
+
+.right-10{
+  padding-right: 10px;
+}
+
+.right-20{
+  padding-right: 20px;
+}
+
+.title-text{
+  font-weight: bold;
+}
+
+
+
+.documents-people{
+  border-top: 1px solid;
+  border-right: 1px solid;
+  border-left: 1px solid;
+  margin: 0 0 20px 25px;
+}
+
+.documents-person{
+  padding: 5px;
+}
+

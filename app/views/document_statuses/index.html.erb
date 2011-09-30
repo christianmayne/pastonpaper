@@ -1,0 +1,6 @@
+<h1>All Document Statuses</h1>
+<p>Stored in the table document_statuses.  These are referenced in the document.status foreign key</p>
+
+<% for document_status in @document_statuses %>
+	<p><a href="/document_statuses/<%= document_status.id %>"><%= document_status.name %></a></p>
+<% end %>

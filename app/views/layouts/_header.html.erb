@@ -1,0 +1,55 @@
+<!-- Header Layout -->
+
+<!-- Logo Section -->
+<div class="span-13 ">
+    <img src="/branding/header.png" alt="www.pastonpaper.com">
+</div>
+
+<!-- Display Login Box -->
+<div class="span-10 ">
+    <div class="span-10 last">
+        <% if current_user.blank? %>
+            <% form_for :user_session, :url => {:controller => "user_sessions", :action => "create"} do |f| %>
+              <div class="span-3">
+                Username<br/>
+                <%= f.text_field :login, :size => 17 %>
+              </div>
+              <div class="span-3">
+                Password<br/>
+                <%= f.password_field :password, :size => 17 %><br />
+              </div>
+              <div class="span-2">
+                <br />
+                <%= f.submit 'Submit', :class=>"button" %><br />
+              </div>
+              <div class="span-2 last">
+                <br />
+                <%= link_to "Register", register_path %>
+              </div>
+            <% end %>
+
+        <!-- Unless Logged in, in which case display Username -->
+        <% else %>
+          <div class="span-10 last">
+            Hi <%= current_user.name %> (<%= current_user.login %>) | 
+            <%= link_to("Sign Out", logout_path) %> | 
+            <span class="unimplemented"><%= link_to("My Account", "#") %></span> | 
+            <span class="unimplemented"><%= link_to("Help", "#") %></span>
+          </div>
+        <% end %>
+    </div>
+    <hr />
+
+   <!-- Display any error messages --> 
+   <div class="span-10 notice">
+        <!-- Error Message -->
+        <%= flash[:notice] unless flash[:notice].blank? %>
+    </div>
+</div>
+
+
+
+
+
+
+

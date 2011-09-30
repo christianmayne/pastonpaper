@@ -1,0 +1,239 @@
+/* 
+Project:    Docfinder
+Filename:   application.css
+Author:     Christian Mayne
+Date:       16th August 2011
+*/
+
+
+
+.container {
+	/*background-color:#1E4366;*/
+    min-height: 800px;
+    width:960px;
+}
+
+.header {
+    min-height:120px;
+}
+
+.menu-bar {
+    background-image: -moz-linear-gradient(center top , #EAEAD0, #DBDBBF);
+    margin-bottom:5px;
+    border: 1px solid #B3A485;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.17), 0 1px rgba(255, 255, 255, 0.6) inset, 1px 0 rgba(255, 255, 255, 0.3) inset, -1px 0 rgba(255, 255, 255, 0.3) inset;
+	/*height:40px;*/
+    height: 31px;
+    position: relative;
+
+}
+
+.menu-item {
+    font: 400 14px/1.3em "Helvetica Neue",Arial,san-serif;
+    border-radius: 4px 0 0 4px;
+    border-right: 1px solid #B3A485;
+    box-shadow: 0 1px rgba(255, 255, 255, 0.6) inset, 1px 0 rgba(255, 255, 255, 0.3) inset, -1px 0 rgba(255, 255, 255, 0.3) inset;
+    color: #43540D;
+    height: 31px;
+    padding: 0 12px;
+    text-decoration: none;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.75);
+    font-weight: 700;
+    line-height: 30px;
+    list-style: none outside none;
+    text-indent: 0;
+    font-size: 13px;
+}
+
+
+.input-box-info,
+.search-box-info {
+    width: 268px;
+    border: 1px solid #B3A485;
+    background-image: -moz-linear-gradient(center top , #EAEAD0, #DBDBBF);
+    margin-bottom:5px;
+    border: 1px solid #B3A485;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.17), 0 1px rgba(255, 255, 255, 0.6) inset, 1px 0 rgba(255, 255, 255, 0.3) inset, -1px 0 rgba(255, 255, 255, 0.3) inset;
+
+}
+
+.input-box-narrow,
+.search-box {
+    width: 668px;
+    /*background-image: -moz-linear-gradient(center top , #EAEAD0, #DBDBBF);*/
+    margin-bottom:5px;
+    border: 1px solid #B3A485;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.17), 0 1px rgba(255, 255, 255, 0.6) inset, 1px 0 rgba(255, 255, 255, 0.3) inset, -1px 0 rgba(255, 255, 255, 0.3) inset;
+
+}
+
+
+.search-box,
+.search-box-info,
+.input-box-info {
+    height: 145px;
+}
+
+
+.search-box,
+.search-box-info,
+.input-box-info,
+.input-box,
+.input-box-narrow,
+.search-form,
+.recent-searches,
+.sidebar-right,
+.content-front,
+.content-secondary,
+.footer
+{
+    border-radius: 5px;
+}
+
+.search-icon,
+.search-icon-people,
+.search-icon-places,
+.search-icon-organisations,
+.search-icon-dates,
+.search-icon-publications {
+    height:100px;
+    width: 100px;
+    border: solid 1px;
+
+}
+
+.search-icon-people {
+    background-image: url('../images/icons/search-icon-people.png')
+}
+
+.search-icon-places {
+    background-image: url('../images/icons/search-icon-places.png')
+}
+
+.search-icon-organisations {
+    background-image: url('../images/icons/search-icon-organisations.png')
+}
+
+.search-icon-dates {
+    background-image: url('../images/icons/search-icon-publications.png')
+}
+
+.search-icon-publications {
+    background-image: url('../images/icons/search-icon-publications.png')
+}
+
+.search-form {
+    width: 710px;
+    min-height:450px;
+    padding-top: 10px ;
+    margin-bottom:5px;
+    border: 1px solid #B3A485;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.17), 0 1px rgba(255, 255, 255, 0.6) inset, 1px 0 rgba(255, 255, 255, 0.3) inset, -1px 0 rgba(255, 255, 255, 0.3) inset;
+}
+
+.inner-search-form {
+    width: 600px;
+    min-height:450px;
+    padding-top: 10px ;
+    margin-bottom:5px;
+    border: 1px solid #B3A485;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.17), 0 1px rgba(255, 255, 255, 0.6) inset, 1px 0 rgba(255, 255, 255, 0.3) inset, -1px 0 rgba(255, 255, 255, 0.3) inset;
+}
+
+.sidebar-right,
+.sidebar-left {
+    width:226px;
+    min-height:450px;
+    padding-top: 10px ;
+    margin-bottom:5px;
+    border: 1px solid #B3A485;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.17), 0 1px rgba(255, 255, 255, 0.6) inset, 1px 0 rgba(255, 255, 255, 0.3) inset, -1px 0 rgba(255, 255, 255, 0.3) inset;
+}
+
+.content-front,
+.document-list {
+    min-height:450px;
+}
+
+.content-secondary{
+    min-height: 150px;
+}
+
+.footer{
+    min-height:80px;
+}
+
+.content-front,
+.content-secondary,
+.content-box,
+.document-list,
+.footer {
+    width: 948px;
+    /*background-image: -moz-linear-gradient(center top , #EAEAD0, #DBDBBF);*/
+    margin-bottom:5px;
+    border: 1px solid #B3A485;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.17), 0 1px rgba(255, 255, 255, 0.6) inset, 1px 0 rgba(255, 255, 255, 0.3) inset, -1px 0 rgba(255, 255, 255, 0.3) inset;
+}    
+
+.content-box-narrow {
+    width: 400px;
+    margin-bottom:5px;
+    border: 1px solid #B3A485;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.17), 0 1px rgba(255, 255, 255, 0.6) inset, 1px 0 rgba(255, 255, 255, 0.3) inset, -1px 0 rgba(255, 255, 255, 0.3) inset;
+}
+
+.standard-box {
+    margin-bottom:5px;
+    border: 1px solid #B3A485;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.17), 0 1px rgba(255, 255, 255, 0.6) inset, 1px 0 rgba(255, 255, 255, 0.3) inset, -1px 0 rgba(255, 255, 255, 0.3) inset;
+    float:left;
+}
+
+/* Fonts etc */
+.text-info-small {
+    font-size:8pt;
+    font-decoration: italic;
+    float:right;
+}
+
+.title-document {
+    font-size: 14pt;
+    text-align: left;
+}
+
+.alt {
+    font-size:14pt;
+}
+
+.table-th {
+    font-weight: bold;
+}
+
+.box-margins {
+    margin-left:10px;
+    margin-right:10px;
+}   
+
+
+/* Colours */
+.red {
+ color: red;
+}
+
+.lightgrey {
+ color: #666666;
+}
+
+.unimplemented {
+    text-decoration: line-through;
+}
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>The Past on Paper | <%= @pagetitle %></title>
+
+
+
+  <%= stylesheet_link_tag 'blueprint/ie.css',
+        'blueprint/screen.css',
+        'blueprint/plugins/fancy-type/screen.css',
+        'blueprint/plugins/buttons/screen.css',
+        'application.css'
+  %>
+  
+  <%= stylesheet_link_tag 'blueprint/print.css', :media=>"print" %>
+
+
+  <%= javascript_include_tag :defaults  %>
+  <%#= csrf_meta_tag %>
+</head>
+
+<body>
+  
+  <div class="container">
+
+    <!-- Header -->
+    <div id="header" class="span-24 header last">
+      <%= render :partial => 'layouts/header' %>
+    </div>
+
+
+    <!-- Menubar -->
+    <div id="menu-bar" class="span-20 prepend-2 append-2 menu-bar last">
+      <%= render :partial => 'layouts/menu_bar'  %>
+    </div>
+
+
+
+    <!-- Yield -->
+    <div id="content" class="span-24 last" >
+      <%= yield %>
+    </div>
+ 
+    <!-- Bottom Menu -->
+    <div id="content-secondary" class="span-24 content-secondary last">  
+      <span class="alt">Secondary Content</span><hr />
+      This could contain links to events, eg: "WWI Document" which would be a search to all documents between certain dates, or "US Civil War" where the searches delimit to certain locations / states and dates
+    </div>
+
+
+    <!-- Footer -->
+    <div id="footer" class="span-24 footer last">
+      <span class="alt">Footer</span>
+    </div>
+    <hr />    
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<%= @pagetitle = @document.name %>
+<div class="new-document">
+  <h3>
+    Add New Document
+  </h3>
+  <div class="doc-attribute-items">
+    <% form_for @document do |f| %>
+      <%= render :partial => 'form', :locals => {:f => f}  %>
+
+    <p class="submit">
+      <%= f.submit "Submit" %>
+    </p>
+  <% end %>
+</div>
+
+</div>
+

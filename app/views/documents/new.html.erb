@@ -1,0 +1,16 @@
+<% @pagetitle = "Add New Document" %>
+<div class="input-form">
+  
+  <span class="alt">Add New Document</span>
+
+  <div class="doc-attribute-items">
+    <% form_for @document do |f| %>
+      <%= render :partial => 'form', :locals => {:f => f}  %>
+
+      <p class="submit">
+        <%= f.submit "Submit" %>
+      </p>
+    <% end %>
+  </div>
+
+</div>

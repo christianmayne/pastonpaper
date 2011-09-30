@@ -1,0 +1,94 @@
+<% @pagetitle = @document.name %>
+<!-- Show Individual Document page -->
+
+<div class="content-box last">
+    <!-- Show Document Type & Title -->
+    <div class="alt "><%= @document.try(:name) %></div>
+    <%= @document.document_type.try(:name) %>
+
+    <!-- If logged in and document owner show edit document links -->
+    <% if !current_user.blank? && current_user.is_document_owner(@document.user_id) %>
+        <div class="">
+            <span class="" style="float: right">
+                <%= link_to "Edit Document", edit_document_path(@document) %>
+            </span>
+        </div>
+    <% end %>
+</div>
+
+
+
+
+<div class="content-box">
+    <!-- Document Title -->
+    <% if !@document.title.blank? %> 
+        <span class="">Title: </span><span> <%= @document.title %></span>
+    <% end %>
+    
+    <!-- Document Attributes --> 
+    <div class="">
+        <% @document.attribute_documents.each do |doc_attr| %>
+            <div class="">
+              <span class=""><%= doc_attr.attribute_type.try(:name) %>: </span>
+              <span class=""><%= "#{doc_attr.value}" %><%= ", #{doc_attr.date}" unless doc_attr.date.blank? %> </span>
+            </div>
+        <% end %>
+    </div>
+
+    <!-- Stockitem Physical attributes -->
+    <div class="">
+            <span class="">Binding : <%= @document.try(:binding) %></span><br />
+            <span class="">Pages : <%= @document.try(:pages) %> </span><br />
+            <span class="">Size (cm) :<%= @document.try(:length) %> x <%= @document.try(:width) %> x <%= @document.try(:depth) %><br />
+            <span class="">Weight (g) :<%= @document.try(:weight) %><br />
+    </div>
+
+    <!-- Condition -->
+    <div class="">
+        <span class="">Condition : <%= @document.try(:condition) %></span><br />
+        <span class="">Comments : <%= @document.try(:comment) %></span><br />
+    </div>
+
+    <!-- If logged in and document owner show Inventory Details -->
+    <% if !current_user.blank? && current_user.is_document_owner(@document.user_id) %>  
+        <div class="">
+            <span class="">Purchase details</span>
+            <span class=""><%= @document.purchase_date %> | <%= @document.purchase_vendor %> | <%= @document.purchase_price %></span>
+        </div>
+
+        <div class="">
+            <span class="">Sale details</span>
+            <span class=""><%= @document.sale_date %> | <%= @document.sale_purchaser %> | <%= @document.sale_price %></span>
+        </div>
+    <% end %>   
+
+    <% if !current_user.is_document_owner(@document.user_id) %>
+        <span class="unimplemented">Buy This Document Button - But only if document status is For Sale</span>
+    <% end %>
+
+
+</div>
+
+
+<div class="" />
+    <span class="">People mentioned within this document</span> | <span class="unimplemented">Sort by:  Firstname | Lastname | Date of Birth | Date of Death | Sex</span> <br/>
+
+    <div class="">
+        <% if !@document.blank? && !@document.people.blank? %>
+            <% @document.people.each do |person|  %>
+                <div class="content-box" style="background-color: <%=person.sex_color%>">
+                    <div style="font-weight: bold">
+                        <%= person.name_title.titleize rescue '' %>
+                        <%= person.name_first rescue ' unknown' %>
+                        <%= " #{person.name_middle.titleize}" rescue '' %>
+                        <%= person.name_last rescue 'unknown' %>
+                        <span style="margin-left: 10px">
+                            <%=person.sex_symbol%>
+                        </span>
+                    </div>
+                    <%= person.event_date rescue '' %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>   
+</div>
