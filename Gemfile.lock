@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/qoobaa/s3.git
-  revision: 74112f58e7f6ff04a8424e35f9a170aef92acad2
-  specs:
-    s3 (0.3.8)
-      proxies (~> 0.2.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -63,7 +56,6 @@ GEM
       cocaine (>= 0.0.2)
       mime-types
     polyglot (0.3.2)
-    proxies (0.2.1)
     rack (1.2.3)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
@@ -122,7 +114,6 @@ DEPENDENCIES
   paperclip (~> 2.3)
   rails (= 3.0.9)
   rspec-rails (= 2.6.1)
-  s3!
   spork (= 0.9.0.rc8)
   webrat (= 0.7.1)
   will_paginate (~> 2.3.15)
