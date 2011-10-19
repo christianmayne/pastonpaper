@@ -4,7 +4,7 @@ gem 'rails', '3.0.9'
 gem 'mysql'
 gem 'authlogic', "2.1.6"
 gem "paperclip", "~> 2.3"
-gem "s3", :git => "git://github.com/qoobaa/s3.git"
+#gem "s3", :git => "git://github.com/qoobaa/s3.git"
 gem "will_paginate", "~> 2.3.15"
 gem 'aws-s3'
 
