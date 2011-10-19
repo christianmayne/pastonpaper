@@ -35,7 +35,7 @@ test:
   database: docfind_test
   pool: 5
   username: root
-  password: marvaw1
+  password: marvaw1p
   socket: /var/run/mysqld/mysqld.sock
 
 production:
