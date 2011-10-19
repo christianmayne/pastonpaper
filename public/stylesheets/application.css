@@ -184,6 +184,7 @@ Date:       16th August 2011
 .content-box,
 .document-list,
 .footer {
+padding:1px;
     width: 948px;
     /*background-image: -moz-linear-gradient(center top , #EAEAD0, #DBDBBF);*/
     margin-bottom:5px;

@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :home, :collection => {:document_search => :get, :simple_location_search => :get, :date_search => :get,
                                        :simple_people_search => :get, :simple_organisation_search => :get, :search_results => :any}
   map.resources :documents
+  map.connect 'document_image_remove/:id',:controller=>'documents',:action=>'remove_image'
 
   map.login 'login',  :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'

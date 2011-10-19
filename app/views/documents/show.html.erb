@@ -9,7 +9,7 @@
     <!-- If logged in and document owner show edit document links -->
     <% if !current_user.blank? && current_user.is_document_owner(@document.user_id) %>
         <div class="">
-            <span class="" style="float: right">
+            <span class="" style="float: right; margin-top:20px;">
                 <%= link_to "Edit Document", edit_document_path(@document) %>
             </span>
         </div>
@@ -67,6 +67,18 @@
     <% end %>
 
 
+</div>
+
+<div class="content-box">
+    <span class="alt">Photos</span> <br />
+
+    <div class="">
+        <% if !@document.blank? && !@document.document_photos.blank? %>
+            <% @document.document_photos.each do |photo|  %>
+					<a href="<%= photo.photo.url(:original) %>" class='lightbox'><%= image_tag photo.photo.url(:small), %></a>
+		   <% end %>
+        <% end %>
+    </div>   
 </div>
 
 

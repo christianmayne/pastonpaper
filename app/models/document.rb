@@ -3,6 +3,7 @@ class Document < ActiveRecord::Base
   has_many :attribute_documents, :dependent => :destroy
   has_many :locations, :dependent => :destroy
   has_many :people, :dependent => :destroy
+  has_many :document_photos, :dependent => :destroy
 
 
 
@@ -13,7 +14,8 @@ class Document < ActiveRecord::Base
   accepts_nested_attributes_for :attribute_documents, :allow_destroy => :true
   accepts_nested_attributes_for :locations, :allow_destroy => :true
   accepts_nested_attributes_for :people, :allow_destroy => :true
-
+  accepts_nested_attributes_for :document_photos, :allow_destroy => :true,:limit => 4,:reject_if => proc { |attributes| attributes['photo'].blank? }
+  
   validates_numericality_of :weight, :width, :length, :depth, :message => "only number allowed", :allow_blank => true
   validates_inclusion_of :weight, :in => 0..30000, :message => "weight should be less than 30000", :allow_blank => true
   validates_inclusion_of :width, :in  => 1..1000, :message => "width should be greather than 1 and less than 1000", :allow_blank => true

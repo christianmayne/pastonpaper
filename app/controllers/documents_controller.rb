@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
 
-  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy, :show]
+  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy, :show,:remove_image]
   before_filter :prepare_all_location, :only => [:new, :edit, :create, :update]
   before_filter :prepare_all_event_type, :only => [:new, :edit, :create, :update]
   before_filter :prepare_all_document_type, :only => [:new, :edit, :create, :update]
@@ -31,10 +31,12 @@ class DocumentsController < ApplicationController
     @locations = @document.locations.build
     @person_events = @people.person_events.build
     @location = Location.new
+	@document_photos= @document.document_photos.build
   end
 
   def create
     @document = current_user.documents.new(params[:document])
+    
     if @document.save
       flash[:notice] = "Successfully created..."
       redirect_to documents_path
@@ -67,7 +69,19 @@ class DocumentsController < ApplicationController
     end
     redirect_to documents_path
   end
+def remove_image
 
+	@document_photo=DocumentPhoto.find(params[:id])
+	if !@document_photo.nil?
+		@document_photo.destroy
+		flash[:notice]="Image deleted"
+		redirect_to edit_document_path(@document_photo.document)
+	else
+		flash[:notice]="some error occured"
+		redirect_to edit_document_path(@document_photo.document)
+	end
+  end
+  
   private
 
   def prepare_document
@@ -96,5 +110,6 @@ class DocumentsController < ApplicationController
   def prepare_all_document_status
     @document_status = DocumentStatus.all
   end
+  
   
 end
