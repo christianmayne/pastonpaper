@@ -15,5 +15,9 @@ class PagesController < ApplicationController
   def terms
     @pagetitle="Terms & Conditions"
   end
+
+  def profile
+    @pagetitle="Your Profile"
+  end
   
 end

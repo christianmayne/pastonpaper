@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110828151532) do
+ActiveRecord::Schema.define(:version => 20111013045003) do
 
   create_table "attribute_documents", :force => true do |t|
     t.integer  "document_id"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(:version => 20110828151532) do
 
   create_table "attribute_types", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "document_photos", :force => true do |t|
+    t.integer  "document_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -71,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20110828151532) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "image_limit",                                       :default => 4
   end
 
   create_table "event_types", :force => true do |t|

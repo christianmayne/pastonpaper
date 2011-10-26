@@ -4,7 +4,7 @@
 
   <!-- Display Logged in Functions -->    
   <% if !current_user.blank? %>
-    <%= link_to "Your Profile", "#", :class=>"menu-item unimplemented" %>
+    <%= link_to "Your Profile", profile_path, :class=>"menu-item" %>
     <%= link_to "Your Documents", documents_path, :class => "menu-item" %>
     <%= link_to "Add your items", new_document_path, :class=> "menu-item" %>
 
