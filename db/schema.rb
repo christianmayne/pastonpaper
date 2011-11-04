@@ -10,7 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20111102141409) do
+=======
+ActiveRecord::Schema.define(:version => 20111013045003) do
+>>>>>>> 03453b133cb76ee841b46583d1bacbbeffca5352
 
   create_table "attribute_documents", :force => true do |t|
     t.integer  "document_id"

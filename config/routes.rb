@@ -26,6 +26,7 @@ ActionController::Routing::Routes.draw do |map|
   match '/contact', :to => 'pages#contact'
   match '/privacy', :to => 'pages#privacy'
   match '/terms', :to => 'pages#terms'
+  match '/profile', :to => 'pages#profile'
  
   
   
