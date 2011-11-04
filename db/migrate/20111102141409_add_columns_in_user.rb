@@ -13,7 +13,7 @@ class AddColumnsInUser < ActiveRecord::Migration
     add_column :users, :tel_number,     :string
     add_column :users, :mobile_number,    :string
     add_column :users, :date_of_birth,    :date
-    add_column :users, :is_active, :boolean ,:default => 1
+    add_column :users, :is_active, :boolean ,:default => true
   end
 
   def self.down
