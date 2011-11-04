@@ -1,4 +1,4 @@
-<%= @pagetitle = "Documents" %>
+<% @pagetitle = "Documents" %>
 <div id="simple-search-box" class="span-24 last">
    <%= render :partial => "shared/search_box" %>
 </div>
@@ -27,7 +27,7 @@
           <td><%= link_to document.document_status.try(:name), document_path(document) %></td>
             <% if !current_user.blank? && current_user.is_document_owner(document.user_id) %>
               <td><%= link_to "Edit", edit_document_path(document) %> /
-                <%= link_to "Delete", document_path(document), :method => :delete %>
+                <%= link_to "Delete", document_path(document), :method => :delete, :confirm => "Are you sure?" %>
               </td>
           <% end %>
         </tr>

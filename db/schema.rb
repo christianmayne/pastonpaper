@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110828151532) do
+ActiveRecord::Schema.define(:version => 20111102141409) do
 
   create_table "attribute_documents", :force => true do |t|
     t.integer  "document_id"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(:version => 20110828151532) do
 
   create_table "attribute_types", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "document_photos", :force => true do |t|
+    t.integer  "document_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -71,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20110828151532) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "image_limit",                                       :default => 4
   end
 
   create_table "event_types", :force => true do |t|
@@ -121,12 +131,11 @@ ActiveRecord::Schema.define(:version => 20110828151532) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "login",                             :null => false
-    t.string   "email",                             :null => false
-    t.string   "crypted_password",                  :null => false
-    t.string   "password_salt",                     :null => false
-    t.string   "persistence_token",                 :null => false
+    t.string   "login",              :default => "",    :null => false
+    t.string   "email",              :default => "",    :null => false
+    t.string   "crypted_password",   :default => "",    :null => false
+    t.string   "password_salt",      :default => "",    :null => false
+    t.string   "persistence_token",  :default => "",    :null => false
     t.integer  "login_count",        :default => 0
     t.integer  "failed_login_count", :default => 0
     t.datetime "last_request_at"
@@ -136,7 +145,19 @@ ActiveRecord::Schema.define(:version => 20110828151532) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin"
+    t.boolean  "admin",              :default => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "county"
+    t.string   "post_code"
+    t.string   "country"
+    t.string   "tel_number"
+    t.string   "mobile_number"
+    t.date     "date_of_birth"
+    t.boolean  "is_active",          :default => true
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

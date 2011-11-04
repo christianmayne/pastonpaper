@@ -1,0 +1,44 @@
+<% @pagetitle = "Profile :: #{current_user.name.humanize}" %>
+<!-- index -->
+<div id="front-page-content" class="span-24 content-front last">
+ <br />
+  <div class=" clearfix">
+    <%= link_to "Change Password", changepassword_path,:class=>"button"%>  <%= link_to "Deactivate My account", deactivateaccount_path,:class=>" button right" ,:method => :delete ,:confirm => "Are you sure? This action cannot be undone."%>
+    
+    </div>
+    <div class="span-12">
+    <span class="alt">Personal Information</span><br />     
+     <span class="span-3">Username</span>  <strong><%= current_user.login%></strong>
+   <hr />
+    
+    <span class="span-3">Name</span>  <%= current_user.name%>
+    <hr />
+      <span class="span-3">Email</span>  <%= current_user.email%>
+    <hr />
+
+    <span class="span-3">Address1</span>  <%= current_user.address1%>
+    <hr />
+    <span class="span-3">Address2</span>  <%= current_user.address2%>
+    <hr />
+    <span class="span-3">City</span>  <%= current_user.city%>    <hr />
+    <span class="span-3">County</span>  <%= current_user.county%>    <hr />
+    <span class="span-3">Postcode</span>  <%= current_user.post_code%>    <hr />
+   <span class="span-3">Country</span>  <%= current_user.country%>    <hr />
+    <span class="span-3">Tel Number</span>  <%= current_user.tel_number%>    <hr />
+    <span class="span-3">Mobile Number</span>  <%= current_user.mobile_number %>    <hr />
+   <span class="span-3">Date of birth</span>  <%= current_user.date_of_birth%>    <hr />
+   
+   <span class="span-3"> </span>
+   <%= link_to "Edit Personal Information" , edit_user_path(current_user) ,:class=>"button right" %>
+   </div>
+   
+   
+   
+</div>
+
+
+
+
+
+
+

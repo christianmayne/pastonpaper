@@ -6,7 +6,7 @@
 <div id="input-box-narrow" class="span-17 input-box-narrow last">
 
   <span class="">Stock Number </span><%= f.text_field :stocknumber, :size=> 15 , :class => 'input-form-input' %>
-  <span class="">Name <%= f.text_field :name, :size => 50, :class => 'input-form-input' %><br>
+  <span class="">Name <%= f.text_field :name, :size => 40, :class => 'input-form-input' %><br>
   <span class="">Type </span><%= f.collection_select :document_type_id, DocumentType.alphabetically, :id, :name, :prompt => true, :class => 'input-form-input' %>
   <span class="last">Status </span><%= f.collection_select :document_status_id, DocumentStatus.alphabetically, :id, :name, :prompt => true, :class => 'input-form-input' %> </span>
 
@@ -19,14 +19,14 @@
   <span class="alt">Your Purchase Info</span><span class="text-info-small lightgrey">Optional. How you acquired this item. This is used for providing you with reports, and is never made public.</span><br/>
   <span class="input-form-label">Date </span>
         <%= f.text_field :purchase_date, :size => 10, :class => 'input-form-input' %>
-  <span class="input-form-label">  |  Vendor </span><%= f.text_field :purchase_vendor, :size => 65, :class => 'input-form-input' %>
+  <span class="input-form-label">  |  Vendor </span><%= f.text_field :purchase_vendor, :size => 50, :class => 'input-form-input' %>
   <span class="input-form-label">  |  Purchase Price </span><%= f.text_field :purchase_price, :size => 10, :class => 'input-form-input' %>
   <hr />
   <!-- Inventory Sale Information -->
   <!-- Not Implemented -->
   <span class="alt">Your Sale Info</span><span class="text-info-small lightgrey">Optional. Sale details for this item. This is used for providing you with reports, and is never made public.</span><br/>
   <span class="input-form-label">Date </span><%= f.text_field :sale_date, :size => 10, :class => 'input-form-input' %>
-  <span class="input-form-label">  |  Purchaser </span><%= f.text_field :sale_purchaser, :size => 65, :class => 'input-form-input' %>
+  <span class="input-form-label">  |  Purchaser </span><%= f.text_field :sale_purchaser, :size => 50, :class => 'input-form-input' %>
   <span class="input-form-label">  |  Sale Price </span><%= f.text_field :sale_price, :size => 10, :class => 'input-form-input' %>
 </div>  
 
@@ -35,7 +35,7 @@
 <!-- Document Information -->
 <div class="content-box">
   <span class="alt">Document Publishing Information</span><span class="text-info-small lightgrey">Information relating to the published aspects of your item</span><br />
-  <span class="input-form-label">Title </span><%= f.text_field :title, :size => 100, :class => 'input-form-input' %>
+  <span class="input-form-label">Title </span><%= f.text_field :title, :size => 55, :class => 'input-form-input' %>
   <span class="input-form-label">  |  Edition </span><%= f.text_field :edition, :size =>5, :class => 'input-form-input' %>  </span><br />
   <span class="input-form-label">Pages </span><%= f.text_field :pages, :size => 10, :class => 'input-form-input' %> </span>
   <span class="input-form-label">Length (mm) </span><%= f.text_field :length, :size => 10, :class => 'input-form-input' %> </span>
@@ -46,9 +46,9 @@
   <% f.fields_for :attribute_documents do |doc_attr| %>
     <%= render :partial => 'attribute_document_fields', :locals => {:f => doc_attr}  %>
   <% end %>
-  <span class=""><%= link_to_add_fields "+ add another attribute", f, :attribute_documents %></span>
-  <span class="input-form-label">Condition  </span><%= f.text_field :condition, :class => 'input-form-input'  %>
-  <span class="input-form-label">Binding </span><%= f.text_field :binding,  :class => 'input-form-input'  %>
+  <span class=""><%= link_to_add_fields "+ add another attribute", f, :attribute_documents %></span><br />
+  <span class="input-form-label">Condition  </span><%= f.text_field :condition,:size => 20, :class => 'input-form-input'  %>
+  <span class="input-form-label">Binding </span><%= f.text_field :binding, :size => 20, :class => 'input-form-input'  %>
   <span class="input-form-label">Comments </span><%= f.text_field :comment,  :class => 'input-form-input'  %>
 </div>
 

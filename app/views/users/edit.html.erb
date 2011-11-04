@@ -1,6 +1,6 @@
 <div class="content-box">
 <div class="box-margins">
- <span class="alt">New user registration</span><span class="text-info-small lightgrey">All * marked fields are mendatory</span><br/>
+ <span class="alt">Edit User Information </span><span class="text-info-small lightgrey">All * marked fields are mendatory</span><br/>
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -28,15 +28,7 @@
     <%= f.label :login, 'Username/Login' %> <br />
     <%= f.text_field :login %>*
   </div>
-  <div class="field">
-    <%= f.label :password %> <br />
-    <%= f.password_field :password %>*
-  </div>
-  <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field  :password_confirmation %>*
-    </div>
-  <div class="field">
+   <div class="field">
     <%= f.label :email %> <br />
     <%= f.text_field :email %>*
   </div>
@@ -63,7 +55,7 @@
        
   <div class="field">
       <%= f.label :post_code %><br />
-      <%= f.text_field  :post_code %>
+      <%= f.text_field  :post_code ,:size=>5%>
     </div>
  
     

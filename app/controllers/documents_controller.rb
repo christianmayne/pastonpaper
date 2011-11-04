@@ -51,6 +51,7 @@ class DocumentsController < ApplicationController
   end
 
   def update
+  begin
     @document.update_attributes(params[:document])
     if @document.save
       flash[:notice] = "Successfully updated"
@@ -59,6 +60,12 @@ class DocumentsController < ApplicationController
       flash[:error] = "Error"
       render :action => "edit"
     end
+   rescue
+      flash[:error] = "Error"
+      render :action => "edit"
+   
+   end
+   
   end
 
   def destroy
@@ -77,7 +84,7 @@ def remove_image
 		flash[:notice]="Image deleted"
 		redirect_to edit_document_path(@document_photo.document)
 	else
-		flash[:notice]="some error occured"
+		flash[:error]="some error occured"
 		redirect_to edit_document_path(@document_photo.document)
 	end
   end

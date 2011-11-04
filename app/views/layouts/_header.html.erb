@@ -1,30 +1,30 @@
 <!-- Header Layout -->
 
 <!-- Logo Section -->
-<div class="span-13 ">
+<div class="span-12 ">
     <img src="/branding/header.png" alt="www.pastonpaper.com">
 </div>
 
 <!-- Display Login Box -->
-<div class="span-10 ">
-    <div class="span-10 last">
+<div class="span-12 last ">
+    <div class="span-12 last">
         <% if current_user.blank? %>
             <%= form_for :user_session, :url => {:controller => "user_sessions", :action => "create"} do |f| %>
-              <div class="span-3">
+              <div class="span-4">
                 Username<br/>
-                <%= f.text_field :login, :size => 17 %>
+                <%= f.text_field :login, :size => 13 %> 
               </div>
-              <div class="span-3">
+              <div class="span-4">
                 Password<br/>
-                <%= f.password_field :password, :size => 17 %><br />
+                <%= f.password_field :password, :size => 13 %><br />
               </div>
               <div class="span-2">
                 <br />
-                <%= f.submit 'Submit', :class=>"button" %><br />
+                <%= f.submit('Login', :class=>"button") %><br />
               </div>
               <div class="span-2 last">
                 <br />
-                <%= link_to "Register", register_path %>
+                <%= link_to "Register", register_path ,:class=>"button" %>
               </div>
             <% end %>
 
@@ -33,18 +33,19 @@
           <div class="span-10 last">
             Hi <%= current_user.name %> (<%= current_user.login %>) | 
             <%= link_to("Sign Out", logout_path) %> | 
-            <span class="unimplemented"><%= link_to("My Account", "#") %></span> | 
+            <span class="unimplemented"><%= link_to("My Account", profile_user_path(current_user)) %></span> | 
             <span class="unimplemented"><%= link_to("Help", "#") %></span>
           </div>
         <% end %>
     </div>
     <hr />
-
+<% if flash[:notice] %>
    <!-- Display any error messages --> 
    <div class="span-10 notice">
         <!-- Error Message -->
-        <%= flash[:notice] unless flash[:notice].blank? %>
+        <%= flash[:notice]  %>
     </div>
+ <% end %>
 </div>
 
 

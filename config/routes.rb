@@ -1,7 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
 
 
-  map.resources :users
+  map.resources :users , :member => {:profile => :get}
+  
   map.resources :user_sessions
   map.resources :home, :collection => {:document_search => :get, :simple_location_search => :get, :date_search => :get,
                                        :simple_people_search => :get, :simple_organisation_search => :get, :search_results => :any}
@@ -12,8 +13,10 @@ ActionController::Routing::Routes.draw do |map|
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   map.register 'register', :controller => 'users', :action => 'new'
   map.home 'home', :controller => 'home', :action => 'index'
-
+  map.changepassword "changepassword",:controller => "users",:action=>"changepassword"
   map.root :controller => 'home', :action => 'index'
+  
+  match "/account/deactivate" => "users#accountdeactivate" ,:as =>"deactivateaccount"
 
   map.connect '/document_statuses/', :controller=>'document_statuses', :action=>'index'
   map.connect '/document_statuses/:id', :controller=>'document_statuses', :action=>'show'

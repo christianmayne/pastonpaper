@@ -1,1 +1,159 @@
-(function($){$().ajaxSend(function(a,xhr,s){xhr.setRequestHeader("Accept","text/javascript, text/html, application/xml, text/xml, */*")})})(jQuery);(function($){$.fn.reset=function(){return this.each(function(){if(typeof this.reset=="function"||(typeof this.reset=="object"&&!this.reset.nodeType)){this.reset()}})};$.fn.enable=function(){return this.each(function(){this.disabled=false})};$.fn.disable=function(){return this.each(function(){this.disabled=true})}})(jQuery);(function($){$.extend({fieldEvent:function(el,obs){var field=el[0]||el,e="change";if(field.type=="radio"||field.type=="checkbox"){e="click"}else{if(obs&&field.type=="text"||field.type=="textarea"){e="keyup"}}return e}});$.fn.extend({delayedObserver:function(delay,callback){var el=$(this);if(typeof window.delayedObserverStack=="undefined"){window.delayedObserverStack=[]}if(typeof window.delayedObserverCallback=="undefined"){window.delayedObserverCallback=function(stackPos){observed=window.delayedObserverStack[stackPos];if(observed.timer){clearTimeout(observed.timer)}observed.timer=setTimeout(function(){observed.timer=null;observed.callback(observed.obj,observed.obj.formVal())},observed.delay*1000);observed.oldVal=observed.obj.formVal()}}window.delayedObserverStack.push({obj:el,timer:null,delay:delay,oldVal:el.formVal(),callback:callback});var stackPos=window.delayedObserverStack.length-1;if(el[0].tagName=="FORM"){$(":input",el).each(function(){var field=$(this);field.bind($.fieldEvent(field,delay),function(){observed=window.delayedObserverStack[stackPos];if(observed.obj.formVal()==observed.obj.oldVal){return}else{window.delayedObserverCallback(stackPos)}})})}else{el.bind($.fieldEvent(el,delay),function(){observed=window.delayedObserverStack[stackPos];if(observed.obj.formVal()==observed.obj.oldVal){return}else{window.delayedObserverCallback(stackPos)}})}},formVal:function(){var el=this[0];if(el.tagName=="FORM"){return this.serialize()}if(el.type=="checkbox"||self.type=="radio"){return this.filter("input:checked").val()||""}else{return this.val()}}})})(jQuery);(function($){$.fn.extend({visualEffect:function(o){e=o.replace(/\_(.)/g,function(m,l){return l.toUpperCase()});return eval("$(this)."+e+"()")},appear:function(speed,callback){return this.fadeIn(speed,callback)},blindDown:function(speed,callback){return this.show("blind",{direction:"vertical"},speed,callback)},blindUp:function(speed,callback){return this.hide("blind",{direction:"vertical"},speed,callback)},blindRight:function(speed,callback){return this.show("blind",{direction:"horizontal"},speed,callback)},blindLeft:function(speed,callback){this.hide("blind",{direction:"horizontal"},speed,callback);return this},dropOut:function(speed,callback){return this.hide("drop",{direction:"down"},speed,callback)},dropIn:function(speed,callback){return this.show("drop",{direction:"up"},speed,callback)},fade:function(speed,callback){return this.fadeOut(speed,callback)},fadeToggle:function(speed,callback){return this.animate({opacity:"toggle"},speed,callback)},fold:function(speed,callback){return this.hide("fold",{},speed,callback)},foldOut:function(speed,callback){return this.show("fold",{},speed,callback)},grow:function(speed,callback){return this.show("scale",{},speed,callback)},highlight:function(speed,callback){return this.show("highlight",{},speed,callback)},puff:function(speed,callback){return this.hide("puff",{},speed,callback)},pulsate:function(speed,callback){return this.show("pulsate",{},speed,callback)},shake:function(speed,callback){return this.show("shake",{},speed,callback)},shrink:function(speed,callback){return this.hide("scale",{},speed,callback)},squish:function(speed,callback){return this.hide("scale",{origin:["top","left"]},speed,callback)},slideUp:function(speed,callback){return this.hide("slide",{direction:"up"},speed,callback)},slideDown:function(speed,callback){return this.show("slide",{direction:"up"},speed,callback)},switchOff:function(speed,callback){return this.hide("clip",{},speed,callback)},switchOn:function(speed,callback){return this.show("clip",{},speed,callback)}})})(jQuery);
+/**
+ * Unobtrusive scripting adapter for jQuery
+ *
+ * Requires jQuery 1.4.3 or later.
+ * https://github.com/rails/jquery-ujs
+ */
+
+(function($) {
+	// Make sure that every Ajax request sends the CSRF token
+	function CSRFProtection(xhr) {
+		var token = $('meta[name="csrf-token"]').attr('content');
+		if (token) xhr.setRequestHeader('X-CSRF-Token', token);
+	}
+	if ('ajaxPrefilter' in $) $.ajaxPrefilter(function(options, originalOptions, xhr){ CSRFProtection(xhr) });
+	else $(document).ajaxSend(function(e, xhr){ CSRFProtection(xhr) });
+
+	// Triggers an event on an element and returns the event result
+	function fire(obj, name, data) {
+		var event = $.Event(name);
+		obj.trigger(event, data);
+		return event.result !== false;
+	}
+
+	// Submits "remote" forms and links with ajax
+	function handleRemote(element) {
+		var method, url, data,
+			dataType = element.data('type') || ($.ajaxSettings && $.ajaxSettings.dataType);
+
+	if (fire(element, 'ajax:before')) {
+		if (element.is('form')) {
+			method = element.attr('method');
+			url = element.attr('action');
+			data = element.serializeArray();
+			// memoized value from clicked submit button
+			var button = element.data('ujs:submit-button');
+			if (button) {
+				data.push(button);
+				element.data('ujs:submit-button', null);
+			}
+		} else {
+			method = element.data('method');
+			url = element.attr('href');
+			data = null;
+		}
+			$.ajax({
+				url: url, type: method || 'GET', data: data, dataType: dataType,
+				// stopping the "ajax:beforeSend" event will cancel the ajax request
+				beforeSend: function(xhr, settings) {
+					if (settings.dataType === undefined) {
+						xhr.setRequestHeader('accept', '*/*;q=0.5, ' + settings.accepts.script);
+					}
+					return fire(element, 'ajax:beforeSend', [xhr, settings]);
+				},
+				success: function(data, status, xhr) {
+					element.trigger('ajax:success', [data, status, xhr]);
+				},
+				complete: function(xhr, status) {
+					element.trigger('ajax:complete', [xhr, status]);
+				},
+				error: function(xhr, status, error) {
+					element.trigger('ajax:error', [xhr, status, error]);
+				}
+			});
+		}
+	}
+
+	// Handles "data-method" on links such as:
+	// <a href="/users/5" data-method="delete" rel="nofollow" data-confirm="Are you sure?">Delete</a>
+	function handleMethod(link) {
+		var href = link.attr('href'),
+			method = link.data('method'),
+			csrf_token = $('meta[name=csrf-token]').attr('content'),
+			csrf_param = $('meta[name=csrf-param]').attr('content'),
+			form = $('<form method="post" action="' + href + '"></form>'),
+			metadata_input = '<input name="_method" value="' + method + '" type="hidden" />';
+
+		if (csrf_param !== undefined && csrf_token !== undefined) {
+			metadata_input += '<input name="' + csrf_param + '" value="' + csrf_token + '" type="hidden" />';
+		}
+
+		form.hide().append(metadata_input).appendTo('body');
+		form.submit();
+	}
+
+	function disableFormElements(form) {
+		form.find('input[data-disable-with], button[data-disable-with]').each(function() {
+			var element = $(this), method = element.is('button') ? 'html' : 'val';
+			element.data('ujs:enable-with', element[method]());
+			element[method](element.data('disable-with'));
+			element.attr('disabled', 'disabled');
+		});
+	}
+
+	function enableFormElements(form) {
+		form.find('input[data-disable-with]:disabled, button[data-disable-with]:disabled').each(function() {
+			var element = $(this), method = element.is('button') ? 'html' : 'val';
+			if (element.data('ujs:enable-with')) element[method](element.data('ujs:enable-with'));
+			element.removeAttr('disabled');
+		});
+	}
+
+	function allowAction(element) {
+		var message = element.data('confirm');
+		return !message || (fire(element, 'confirm') && confirm(message));
+	}
+
+	function requiredValuesMissing(form) {
+		var missing = false;
+		form.find('input[name][required]').each(function() {
+			if (!$(this).val()) missing = true;
+		});
+		return missing;
+	}
+
+	$('a[data-confirm], a[data-method], a[data-remote]').live('click.rails', function(e) {
+		var link = $(this);
+		if (!allowAction(link)) return false;
+
+		if (link.data('remote') != undefined) {
+			handleRemote(link);
+			return false;
+		} else if (link.data('method')) {
+			handleMethod(link);
+			return false;
+		}
+	});
+
+	$('form').live('submit.rails', function(e) {
+		var form = $(this), remote = form.data('remote') != undefined;
+		if (!allowAction(form)) return false;
+
+		// skip other logic when required values are missing
+		if (requiredValuesMissing(form)) return !remote;
+
+		if (remote) {
+			handleRemote(form);
+			return false;
+		} else {
+			// slight timeout so that the submit button gets properly serialized
+			setTimeout(function(){ disableFormElements(form) }, 13);
+		}
+	});
+
+	$('form input[type=submit], form input[type=image], form button[type=submit], form button:not([type])').live('click.rails', function() {
+		var button = $(this);
+		if (!allowAction(button)) return false;
+		// register the pressed submit button
+		var name = button.attr('name'), data = name ? {name:name, value:button.val()} : null;
+		button.closest('form').data('ujs:submit-button', data);
+	});
+
+	$('form').live('ajax:beforeSend.rails', function(event) {
+		if (this == event.target) disableFormElements($(this));
+	});
+
+	$('form').live('ajax:complete.rails', function(event) {
+		if (this == event.target) enableFormElements($(this));
+	});
+})( jQuery );

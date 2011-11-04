@@ -1,13 +1,13 @@
 <div class="fields"> 
     <span class="input-form-label">Title </span><%= f.text_field :name_title, :size => 4, :class => 'input-form-input' %></span>
-    <span class="input-form-label">Firstname </span> <%= f.text_field :name_first, :size => 18, :class => 'input-form-input' %></span>
-    <span class="input-form-label">Middlename </span><%= f.text_field :name_middle, :size => 18, :class => 'input-form-input' %></span>
-    <span class="input-form-label">Surname </span><%= f.text_field :name_last, :size => 18, :class => 'input-form-input' %></span>
+    <span class="input-form-label">Firstname </span> <%= f.text_field :name_first, :size => 15, :class => 'input-form-input' %></span>
+    <span class="input-form-label">Middlename </span><%= f.text_field :name_middle, :size => 10, :class => 'input-form-input' %></span>
+    <span class="input-form-label">Surname </span><%= f.text_field :name_last, :size => 10, :class => 'input-form-input' %></span>
     <span class="input-form-label short-select">Sex </span><%= f.select :sex, people_gender, :prompt => true, :size => 4, :class => 'input-form-input' %></span>
     <span class="input-form-label"><%= link_to_remove_fields "remove person", f %></span><br />
 
 
-    <div class="span-1" style="width:10%;">    
+    <div class="span-1" style="width:5%;">    
         Add Life Event
     </div>
     

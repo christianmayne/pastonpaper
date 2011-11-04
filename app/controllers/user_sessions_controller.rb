@@ -8,9 +8,24 @@ class UserSessionsController < ApplicationController
 
   def create
     @user_session = UserSession.new(params[:user_session])
+    
+
     if @user_session.save
-      flash[:notice] = "Login successful!"
-      redirect_back_or_default home_index_url
+        @current_user_session = UserSession.find
+        if @current_user_session 
+          current_user = @current_user_session.user
+          if  current_user && !current_user.is_active?
+              current_user_session.destroy
+              flash[:notice] = "Your account has been Deactivated!"
+              redirect_back_or_default home_index_url
+           else
+          flash[:notice] = "Login successful!"
+          redirect_back_or_default home_index_url 
+           end    
+        else
+          flash[:notice] = "Login successful!"
+          redirect_back_or_default home_index_url
+      end
     else
       render :action => :new
     end

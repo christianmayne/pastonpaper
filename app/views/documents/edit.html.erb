@@ -1,7 +1,7 @@
-<%= @pagetitle = @document.name %>
+<% @pagetitle = @document.name %>
 <div class="new-document">
   <h3>
-    Add New Document
+    Edit  Document >> <%= @document.name %>
   </h3>
   <div class="doc-attribute-items">
     <% form_for @document, :html=>{ :multipart => true}  do |f| %>
@@ -9,7 +9,7 @@
 
     <p class="submit">
       <%= f.submit "Submit" %>
-    </p>
+    <D/p>
   <% end %>
 </div>
 
